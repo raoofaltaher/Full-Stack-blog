@@ -1,7 +1,5 @@
 # RaoofAltaher-Blog
 
-Triggering Vercel cache invalidation.
-
 A personal blog built with Next.js.
 
 ## Description
