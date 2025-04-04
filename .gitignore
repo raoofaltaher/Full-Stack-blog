@@ -34,6 +34,15 @@ yarn-error.log*
 config.js
 .env*.local
 
+node_modules/
+.DS_Store
+*.log
+tmp/
+*.swp
+.idea/
+.vscode/
+*.pyc
+
 # vercel
 .vercel
 
