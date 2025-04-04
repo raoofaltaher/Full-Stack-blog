@@ -1,36 +1,36 @@
-const withMDX = require('@next/mdx')({
+const withMDX = require("@next/mdx")({
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [],
     rehypePlugins: [],
   },
-})
+});
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+  pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   compiler: {
-    removeConsole: process.env.NODE_ENV === 'production' ? true : false,
+    removeConsole: process.env.NODE_ENV === "production" ? true : false,
   },
-  webpack: config => {
-    config.plugins.push(new VeliteWebpackPlugin())
-    return config
-  }
-}
+  webpack: (config) => {
+    config.plugins.push(new VeliteWebpackPlugin());
+    return config;
+  },
+};
 
-module.exports = withMDX(nextConfig)
+module.exports = withMDX(nextConfig);
 
 class VeliteWebpackPlugin {
-  static started = false
+  static started = false;
   apply(/** @type {import('webpack').Compiler} */ compiler) {
     // executed three times in nextjs
     // twice for the server (nodejs / edge runtime) and once for the client
-    compiler.hooks.beforeCompile.tapPromise('VeliteWebpackPlugin', async () => {
-      if (VeliteWebpackPlugin.started) return
-      VeliteWebpackPlugin.started = true
-      const dev = compiler.options.mode === 'development'
-      const { build } = await import('velite')
-      await build({ watch: dev, clean: !dev })
-    })
+    compiler.hooks.beforeCompile.tapPromise("VeliteWebpackPlugin", async () => {
+      if (VeliteWebpackPlugin.started) return;
+      VeliteWebpackPlugin.started = true;
+      const dev = compiler.options.mode === "development";
+      const { build } = await import("velite");
+      await build({ watch: dev, clean: !dev });
+    });
   }
 }
