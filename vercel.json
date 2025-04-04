@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "files": [
+    "public/**",
+    "src/**",
+    "content/**",
+    ".velite/generated/**",
+    "next.config.js",
+    "postcss.config.js",
+    "tailwind.config.js",
+    "velite.config.js",
+    "package.json",
+    "package-lock.json",
+    "jsconfig.json"
+  ],
+  "build": {
+    "env": {
+      "NODE_ENV": "production"
+    }
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/"
+    }
+  ]
+}
