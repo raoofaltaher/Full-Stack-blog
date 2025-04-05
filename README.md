@@ -1,4 +1,4 @@
-# RaoofAltaher-Blog
+# Blog
 
 A personal blog built with Next.js.
 
